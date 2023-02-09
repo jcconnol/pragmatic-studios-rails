@@ -1,0 +1,11 @@
+<section class="event">
+        <div class="summary">
+
+
+    <strong><%= @event.name %></strong>
+    in <%= @event.location %>:
+    <%= price(@event) %>
+    <p><%= @event.description %></p>
+    <p>Starts at: <%= day_and_time(@event) %></p>
+</div>
+</section>
