@@ -13,3 +13,7 @@ Mike's age:<%=  @age %>
     <p>Starts at: <%= day_and_time(event) %></p>
 
 <% end %>
+
+<section class="admin">
+    <%= link_to "Add New Event", new_event_path, class: "button" %>
+</section>
