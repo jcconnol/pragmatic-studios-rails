@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :registrations
+
   root "events#index"
 
-  resources :events # Rails makes all routes for event with one line
+  resources :events do # Rails makes all routes for event with one line
+    resources :registrations #makes events/id/registrations
+  end
 
   # get "events" => "events#index"
   # post "events/new" => "events#create"
