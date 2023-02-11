@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :registrations
   root "events#index"
 
   resources :events # Rails makes all routes for event with one line
