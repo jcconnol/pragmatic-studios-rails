@@ -1,6 +1,6 @@
 module EventsHelper
   def price(event)
-    if event.free? == 0
+    if event == 0 || event.price == nil
       "Free"
     else
       number_to_currency(event.price, precision: 0)

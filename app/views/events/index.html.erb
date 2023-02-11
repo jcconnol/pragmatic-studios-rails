@@ -7,7 +7,11 @@ Mike's age:<%=  @age %>
 
 
     <strong><%= link_to event.name, event_path(event) %></strong>
-    in <%= event.location %>:
+    <%
+=begin%>
+ in <%= event.location %>:
+<%
+=end%>
     <%= price(event) %>
     <p><%= event.description %></p>
     <p>Starts at: <%= day_and_time(event) %></p>
