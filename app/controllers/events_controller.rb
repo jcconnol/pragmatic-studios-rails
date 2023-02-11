@@ -4,6 +4,15 @@ class EventsController < ApplicationController
     @events = Event.upcoming
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      redirect_to events_url, alert: "Movie removed!"
+    else
+      render :edit
+    end
+  end
+
   def show
     @event = Event.find(params[:id])
   end
@@ -16,7 +25,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to event_path
+      redirect_to event_path, notice: "Event updated!"
     else
       render :edit
     end
@@ -29,7 +38,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: "Event created!"
     else
       render :new
     end
@@ -40,11 +49,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event)
       .permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name)
-  end
-
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy()
-    redirect_to events_url
   end
 end
