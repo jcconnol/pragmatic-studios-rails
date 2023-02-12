@@ -16,6 +16,10 @@ class Event < ApplicationRecord
     self.price != 0 || price.blank?
   end
 
+  def sold_out?
+    (capacity - registrations.size).zero?
+  end
+
   def self.upcoming
     where("starts_at > ?", Time.now).order("starts_at desc")
   end
