@@ -10,6 +10,7 @@
     <%= pluralize(@event.capacity, "spot") %> &bull; <%= price(@event) %>
     <p><%= @event.description %></p>
     <div class="register">
+        <%= link_to "Register!", new_event_registration_path(@event), class: "register" %>
         <%= link_to "Whos registered?", event_registrations_path(@event), class: "button" %>
     </div>
     <p>Starts at: <%= day_and_time(@event) %></p>
