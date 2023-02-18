@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   get "signup" => "users#new"
 
+  resource :session, only: [:create, :new, :destroy]
+
   # get "events" => "events#index"
   # post "events/new" => "events#create"
   # get "events/:id" => "events#show", as: "event"
