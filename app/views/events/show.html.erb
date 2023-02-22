@@ -23,3 +23,16 @@
         <%= button_to "Delete", @event, class: "button", method: :delete %>
     </section>
 <% end %>
+
+<aside>
+    <% if @likers.present? %>
+        <h4>liked by</h4>
+        <ul>
+            <% @likers.each do |user| %>
+                <li>
+                    <%= link_to user.name, user %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
+</aside>
