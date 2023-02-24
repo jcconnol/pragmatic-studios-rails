@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root "events#index"
 
+  get "events/filter/:filter" => "events#index", as: :filtered_events
+
   resources :events do # Rails makes all routes for event with one line
     resources :registrations #makes events/id/registrations
     resources :likes

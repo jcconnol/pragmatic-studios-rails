@@ -15,6 +15,11 @@ class Event < ApplicationRecord
     message: "must be a jpg or png"
   }
 
+  scope: :past, -> { where("starts_at < ?", Time.now).order("starts_at desc") }
+  scope: :upcoming, -> { where("starts_at > ?", Time.now).order("starts_at desc") }
+  scope: :free, -> { upcoming.where(price: 0.0).order(:name) }
+  scope: :recent, ->(max=3) { past.limit(max) }
+
   def free?
     self.price != 0 || price.blank?
   end

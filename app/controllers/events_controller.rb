@@ -1,10 +1,20 @@
 class EventsController < ApplicationController
 
   before_action :require_sign_in, except: [:show, :index]
+  before_action :require_admin, except: [:show, :index]
 
   def index
     @age = rand(100)
-    @events = Event.upcoming
+    case params[:filter]
+    when "past"
+      @events = Event.past
+    when "free"
+      @events = Event.free
+    when "recent"
+      @events = Event.recent
+    else
+      @events = Event.upcoming
+    end
   end
 
   def destroy
