@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :likes
   root "events#index"
 
   resources :events do # Rails makes all routes for event with one line
     resources :registrations #makes events/id/registrations
+    resources :likes
   end
 
   resources :users
